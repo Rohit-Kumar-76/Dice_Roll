@@ -106,7 +106,7 @@ export const Dice = () => {
                         <h2 className="text-lg font-bold mb-2">Game Rules</h2>
                         <p>1. Select a number from 1 to 6.</p>
                         <p>2. Click on the dice to roll.</p>
-                        <p>3. Score points if your selected number matches the rolled number. Matched Number will be your Score.</p>
+                        <p>3. Score points if your selected number matches the rolled number. +6  will be Rewarded.</p>
                         <p>4. Penalty of -2 points for two consecutive mistakes.</p>
                     </div>
                 )}
