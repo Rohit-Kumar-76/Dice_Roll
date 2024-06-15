@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../App.css'; // Assuming you have a separate CSS file
+import Alert from './Alert'; // Import the custom alert component
 
 export const Dice = () => {
     const arrNumber = [1, 2, 3, 4, 5, 6];
-    const [selectedNum, setSelectedNum] = useState();
+    const [selectedNum, setSelectedNum] = useState(null);
     const [diceNumber, setDiceNumber] = useState(2);
     const [isSpinning, setIsSpinning] = useState(false);
     const [score, setScore] = useState(0);
     const [mistakeCount, setMistakeCount] = useState(0);
     const [showRules, setShowRules] = useState(false);
+    const [alert, setAlert] = useState(null);
 
     const Numbers = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -16,7 +18,7 @@ export const Dice = () => {
 
     const rollDice = () => {
         if (!selectedNum) {
-            alert('Please select a number first.');
+            setAlert({ message: 'Please select a number first.', type: 'error' });
             return;
         }
 
@@ -33,19 +35,21 @@ export const Dice = () => {
 
             // Check if the selected number matches the dice number
             if (selectedNum === newDiceNumber) {
-                setScore(score + newDiceNumber); // Assign score
+                setScore(score + 6); // Assign score
                 setMistakeCount(0); // Reset mistake count on correct guess
+                setAlert({ message: 'Congratulations! You guessed the right number.', type: 'success' });
             } else {
                 if (mistakeCount === 1) {
                     setScore(score - 2); // Deduct 2 from score on second mistake
                     setMistakeCount(0); // Reset mistake count
+                    setAlert({ message: 'Wrong guess! Penalty of -2 points.', type: 'error' });
                 } else {
                     setMistakeCount(mistakeCount + 1); // Increment mistake count
+                    setAlert({ message: 'Wrong guess! Try again.', type: 'error' });
                 }
             }
         }, 1000); // Duration of the spin animation
     }
-
 
     const resetGame = () => {
         setSelectedNum(null);
@@ -58,10 +62,14 @@ export const Dice = () => {
         setShowRules(!showRules);
     }
 
+    const closeAlert = () => {
+        setAlert(null);
+    }
+
     return (
-        <main className='background'>
-            <div className='container flex flex-col-reverse md:flex-row lg:flex-row justify-between items-center p-2 pt-8 md:pt-2 lg:pt-2'>
-                <div className="border-black border-2 w-32 mx-2">
+        <main className='bg-gray-100 min-h-screen'>
+            <div className='container mx-auto flex flex-col-reverse md:flex-row lg:flex-row justify-between items-center p-2 pt-8 md:pt-2 lg:pt-2'>
+                <div className="border-2 border-black w-32 mx-2">
                     <h1 className="text-5xl text-black text-center font-bold">{score}</h1>
                     <p className="text-xl text-center font-bold">Total Score</p>
                 </div>
@@ -83,10 +91,10 @@ export const Dice = () => {
                     <p className='text-end p-2 text-xl font-bold'>Select Number</p>
                 </div>
             </div>
-            <div className='flex items-center justify-center flex-col  py-20 '>
+            <div className='flex items-center justify-center flex-col py-20'>
                 <div
                     onClick={rollDice}
-                    className={` flex cursor-pointer items-center justify-center border-black bg-black rounded-md text-white w-28 h-28 p-2 border-4 font-bold text-4xl text-center ${isSpinning ? 'spin' : ''}`}
+                    className={`flex cursor-pointer items-center justify-center border-black bg-black rounded-md text-white w-28 h-28 p-2 border-4 font-bold text-4xl text-center ${isSpinning ? 'animate-spin' : ''}`}
                 >
                     {diceNumber}
                 </div>
@@ -98,9 +106,16 @@ export const Dice = () => {
                         <h2 className="text-lg font-bold mb-2">Game Rules</h2>
                         <p>1. Select a number from 1 to 6.</p>
                         <p>2. Click on the dice to roll.</p>
-                        <p>3. Score points if your selected number matches the rolled number .Matched Number will be your Score</p>
+                        <p>3. Score points if your selected number matches the rolled number. Matched Number will be your Score.</p>
                         <p>4. Penalty of -2 points for two consecutive mistakes.</p>
                     </div>
+                )}
+                {alert && (
+                    <Alert
+                        message={alert.message}
+                        type={alert.type}
+                        onClose={closeAlert}
+                    />
                 )}
             </div>
         </main>
