@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Dice_Roll/static/css/main.c10cdd84.css",
-    "main.js": "/Dice_Roll/static/js/main.a0a3e7ff.js",
+    "main.js": "/Dice_Roll/static/js/main.a4a40e79.js",
     "static/js/453.c0af4766.chunk.js": "/Dice_Roll/static/js/453.c0af4766.chunk.js",
     "static/media/dice.jpg": "/Dice_Roll/static/media/dice.e9c1c309554ffcad2667.jpg",
     "index.html": "/Dice_Roll/index.html",
     "main.c10cdd84.css.map": "/Dice_Roll/static/css/main.c10cdd84.css.map",
-    "main.a0a3e7ff.js.map": "/Dice_Roll/static/js/main.a0a3e7ff.js.map",
+    "main.a4a40e79.js.map": "/Dice_Roll/static/js/main.a4a40e79.js.map",
     "453.c0af4766.chunk.js.map": "/Dice_Roll/static/js/453.c0af4766.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c10cdd84.css",
-    "static/js/main.a0a3e7ff.js"
+    "static/js/main.a4a40e79.js"
   ]
 }
