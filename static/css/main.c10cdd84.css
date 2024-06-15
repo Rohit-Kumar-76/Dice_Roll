@@ -1,2 +1,0 @@
-@tailwind base;@tailwind components;@tailwind utilities;@keyframes rotate{0%,to{transform:rotate(0deg)}50%{transform:rotate(180deg)}}.hover-rotate:hover{animation:rotate 2s infinite}@keyframes spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.spin{animation:spin .6s ease-in-out}.background{height:100vh}
-/*# sourceMappingURL=main.c10cdd84.css.map*/
