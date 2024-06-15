@@ -1,1 +1,0 @@
-@keyframes rotate{0%,to{transform:rotate(0)}50%{transform:rotate(180deg)}}.hover-rotate:hover{animation:rotate 2s infinite}@keyframes spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.spin{animation:spin .6s ease-in-out}.background{height:100vh}@tailwind base;@tailwind components;@tailwind utilities;
