@@ -60,7 +60,7 @@ export const Dice = () => {
 
     return (
         <main className='background'>
-            <div className='container flex justify-between items-center p-2 filter blur-1'>
+            <div className='container flex flex-col-reverse md:flex-row lg:flex-row justify-between items-center p-2 pt-8 md:pt-2 lg:pt-2'>
                 <div className="border-black border-2 w-32 mx-2">
                     <h1 className="text-5xl text-black text-center font-bold">{score}</h1>
                     <p className="text-xl text-center font-bold">Total Score</p>
@@ -83,10 +83,10 @@ export const Dice = () => {
                     <p className='text-end p-2 text-xl font-bold'>Select Number</p>
                 </div>
             </div>
-            <div className='flex items-center justify-center flex-col  py-10 '>
+            <div className='flex items-center justify-center flex-col  py-20 '>
                 <div
                     onClick={rollDice}
-                    className={`flex cursor-pointer items-center justify-center border-black bg-black rounded-md text-white w-28 h-28 p-2 border-4 font-bold text-4xl text-center ${isSpinning ? 'spin' : ''}`}
+                    className={` flex cursor-pointer items-center justify-center border-black bg-black rounded-md text-white w-28 h-28 p-2 border-4 font-bold text-4xl text-center ${isSpinning ? 'spin' : ''}`}
                 >
                     {diceNumber}
                 </div>
